@@ -981,6 +981,11 @@ opt_parse(int argc, char *argv[], char *cwd, Jconf *jconf)
       GET_TMPARG;
       jconf->input.adinnet_port = atoi(tmparg);
       continue;
+    } else if (strmatch(argv[i],"-vecport")) { /* adinnet port num */
+      if (!check_section(jconf, argv[i], JCONF_OPT_GLOBAL)) return FALSE; 
+      GET_TMPARG;
+      jconf->input.vecinnet_port = atoi(tmparg);
+      continue;
     } else if (strmatch(argv[i],"-nostrip")) { /* do not strip zero samples */
       if (!check_section(jconf, argv[i], JCONF_OPT_GLOBAL)) return FALSE; 
       jconf->preprocess.strip_zero_sample = FALSE;

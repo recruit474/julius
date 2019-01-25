@@ -73,7 +73,7 @@ int close_socket(int sd);
 void cleanup_socket();
 
 /* vecin_net.c */
-boolean vecin_standby();
+boolean vecin_standby(int vecinnet_port);
 boolean vecin_open();
 int vecin_get_configuration(int opcode);
 int vecin_read(float *vecbuf, int veclen);

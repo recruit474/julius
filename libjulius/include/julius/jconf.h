@@ -909,6 +909,10 @@ typedef struct __Jconf__ {
      * Port number for adinnet input (-adport)
      */
     int adinnet_port;
+    /**
+     * Port number for vecinnet input (-vecport)
+     */
+    int vecinnet_port;
 #ifdef USE_NETAUDIO
     /**
      * Host/unit name for NetAudio/DatLink input (-NA)

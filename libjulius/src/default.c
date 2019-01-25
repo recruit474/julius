@@ -67,6 +67,7 @@ jconf_set_default_values(Jconf *j)
   j->input.use_ds48to16			= FALSE;
   j->input.inputlist_filename		= NULL;
   j->input.adinnet_port			= ADINNET_PORT;
+  j->input.vecinnet_port        = VECINNET_PORT;
 #ifdef USE_NETAUDIO
   j->input.netaudio_devname		= NULL;
 #endif

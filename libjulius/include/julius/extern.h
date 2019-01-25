@@ -326,7 +326,7 @@ void plugin_exec_vector_postprocess_all(HTK_Param *param);
 void plugin_exec_process_result(Recog *recog);
 boolean mfc_module_init(MFCCCalc *mfcc, Recog *recog);
 boolean mfc_module_set_header(MFCCCalc *mfcc, Recog *recog);
-boolean mfc_module_standby(MFCCCalc *mfcc);
+boolean mfc_module_standby(MFCCCalc *mfcc, Recog *recog);
 boolean mfc_module_begin(MFCCCalc *mfcc);
 boolean mfc_module_end(MFCCCalc *mfcc);
 int mfc_module_read(MFCCCalc *mfcc, int *new_t);

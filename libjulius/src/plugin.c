@@ -523,7 +523,7 @@ boolean
 mfc_module_init(MFCCCalc *mfcc, Recog *recog)
 {
   /* assign default functions */
-  mfcc->func.fv_standby    = (boolean (*)()) vecin_standby;
+  mfcc->func.fv_standby    = (boolean (*)(int)) vecin_standby;
   mfcc->func.fv_begin      = (boolean (*)()) vecin_open;
   mfcc->func.fv_read       = (int (*)(VECT *, int)) vecin_read;
   mfcc->func.fv_end        = (boolean (*)()) vecin_close;
@@ -538,7 +538,7 @@ mfc_module_init(MFCCCalc *mfcc, Recog *recog)
     /* no plugin, use the default functions */
     return TRUE;
   }
-  mfcc->func.fv_standby  = (boolean (*)()) plugin_get_func(mfcc->plugin_source, "fvin_standby");
+  mfcc->func.fv_standby  = (boolean (*)(int)) plugin_get_func(mfcc->plugin_source, "fvin_standby");
   mfcc->func.fv_begin    = (boolean (*)()) plugin_get_func(mfcc->plugin_source, "fvin_open");
   mfcc->func.fv_read 	   = (int (*)(VECT *, int)) plugin_get_func(mfcc->plugin_source, "fvin_read");
   mfcc->func.fv_end 	   = (boolean (*)()) plugin_get_func(mfcc->plugin_source, "fvin_close");
@@ -598,11 +598,11 @@ mfc_module_set_header(MFCCCalc *mfcc, Recog *recog)
 }
 
 boolean
-mfc_module_standby(MFCCCalc *mfcc)
+mfc_module_standby(MFCCCalc *mfcc, Recog *recog)
 {
   int ret;
 
-  if (mfcc->func.fv_standby) ret = mfcc->func.fv_standby();
+  if (mfcc->func.fv_standby) ret = mfcc->func.fv_standby(recog->jconf->input.vecinnet_port);
   else ret = TRUE;
   mfcc->segmented_by_input = FALSE;
   return ret;

@@ -119,7 +119,7 @@ local_read_data(int sd, void *buf, int bytes)
  * </EN>
  */
 boolean
-vecin_standby()
+vecin_standby(int vecinnet_port)
 {
   vecin_sd = -1;
   vecin_asd = -1;
@@ -127,12 +127,12 @@ vecin_standby()
   conf.fshift = 0;
   conf.outprob_p = FALSE;
 
-  if ((vecin_sd = ready_as_server(VECINNET_PORT)) < 0) {
-    jlog("Error: vecin_net: cannot listen port %d to be a server\n", VECINNET_PORT);
+  if ((vecin_sd = ready_as_server(vecinnet_port)) < 0) {
+    jlog("Error: vecin_net: cannot listen port %d to be a server\n", vecinnet_port);
     return FALSE;
   }
 
-  jlog("Stat: vecin_net: listening port %d\n", VECINNET_PORT);
+  jlog("Stat: vecin_net: listening port %d\n", vecinnet_port);
 
   return TRUE;
 }

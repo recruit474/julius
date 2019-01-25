@@ -635,7 +635,7 @@ j_adin_init(Recog *recog)
       if (mfc_module_init(recog->mfcclist, recog) == FALSE) {
 	return FALSE;
       }
-      ret = mfc_module_standby(recog->mfcclist);
+      ret = mfc_module_standby(recog->mfcclist, recog);
     } else {
       ret = TRUE;
     }
